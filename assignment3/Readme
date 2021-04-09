@@ -3,6 +3,6 @@ This program simulates a theatre with shows.
 Enables search of showings via:
 -Day of showing
 -Genre
--Time
+-Time (within 15 minutes)
 -Actor/actress 
 -Day and time
