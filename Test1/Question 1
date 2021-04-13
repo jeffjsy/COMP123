@@ -1,0 +1,58 @@
+Create a new Console Application project (C#, .NET Core) called "Question01" (without quotes).
+
+In your Program class, create a new method called GetInfo. This method receives one parameter: A double list that is expected to contain a set of random floating-point numbers. It returns a string that contains a metadata report on the specified list of doubles. The report should include: The numbers found in the list in the first line (in exactly this format: [number1, number2, number3, number4, etc], with the square brackets "[ ]" around it and separated by commas), then the list average in the second line, the highest number in the list in the third line, and the lowest number in the list in the fourth line. Note that each one of these should appear in an individual line in the report. You are expected to use a list in this question.
+
+Once you are done, write the test harness in the Main method of your Program class, ensuring your code is fully functional as per requirements. In other words, define random lists of doubles in your Main method, and display corresponding reports in the Console. The number of items in this list is defined by the last digit of your student number, times 4. For example, if your student number ends with 1, your list should have size 4. If your student number ends with 2, your list should have size 8. If your student number is 0, your list should have size 10. You are free to create your random numbers using any method.
+For full marks, ensure your method handles exceptions properly, and in case of errors, display clean and meaningful messages to the user (Hint: Implement try-catch blocks).
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+
+namespace Question01
+{
+   class Program
+   {
+       static void Main(string[] args)
+       {
+           List<double> doubleList = new List<double>();
+
+           for (int i = 1; i <= 32; i++)
+           {
+               double rand = Convert.ToDouble(new Random().Next(1, 10));
+               doubleList.Add(rand);
+           }                
+
+           GetInfo(doubleList);
+       }
+
+
+       public static string GetInfo(List<double> doubleList)
+       {
+           Console.Write($"The numbers in the list are:[");
+           foreach (double x in doubleList)
+           {
+
+               Console.Write($"{x}, ");
+           }
+           Console.WriteLine("]");
+
+           Console.Write("The average of the numbers is: ");
+           int listCount = doubleList.Count();
+           double total = (doubleList.Sum(x => x)) / listCount;
+           Console.WriteLine(total);
+
+           Console.Write("The highest number in the list is: ");
+           double max = doubleList.Max();
+           Console.WriteLine(max);
+
+           Console.Write("The highest number in the list is: ");
+           double min = doubleList.Min();
+           Console.WriteLine(min);
+
+           string output = null;
+           return output;
+                       
+       }
+   }
+}
