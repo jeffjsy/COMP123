@@ -1,0 +1,78 @@
+Create a new Console Application project (C#, .NET Core) called "Question02" (without quotes).
+
+
+In your Program.cs file, inside your Question02 namespace and outside the Program class, create a new class called Student. In this class, you must define at least 8 properties that describe attributes that a student has. You are free to come up with your own properties, but you must use at least one instance of each of the following data types: string, int, DateTime, boolean, and an enumerator of your making. Your first property must be a string StudentID, which is initialized (in the constructor) to a value that is guaranteed to be unique.
+
+The Student class must have only one constructor, which is parameterless.
+
+In your Student class, override the ToString method, so that it returns a string that contains meaningful information on the object.
+
+Once you are done, write the test harness in the Main method of your Program class, ensuring your code is fully functional as per requirements. In other words, define two or three random Student objects in your Main method, and display their information in the Console. You can create your students freely.
+For full marks, ensure at least one of your properties is automatically calculated.
+using System;
+
+namespace Question02
+{
+   class Program
+   {
+       static void Main(string[] args)
+       {
+           Student newStudent = new Student();
+           newStudent.FirstName = "John";
+           newStudent.LastName = "Smith";
+           newStudent.DateOfBirth = new DateTime(1987, 12, 24);
+           newStudent.IsInternational = false;
+           newStudent.GPA = 4.5;
+           newStudent.Sex = Sex.Male;
+           Console.Write(newStudent);
+       }
+   }
+
+   class Student
+   {
+       public string StudentID { get; set; }
+       public string FirstName { get; set; }
+       public string LastName { get; set; }
+
+       public int Age
+       {
+           get
+           {
+               var now = DateTime.Now;
+               return now.Year - this.DateOfBirth.Year;
+           }
+       }
+
+       public DateTime DateOfBirth { get; set; }
+       public bool IsInternational { get; set; }
+       public double GPA { get; set; }
+       public Sex Sex { get; set; }
+
+
+
+       public Student()
+       {
+           this.StudentID = Guid.NewGuid().ToString();
+
+       }
+
+       public override string ToString()
+       {
+           return $"Student ID: {this.StudentID} \n" +
+                  $"Full name: {this.FirstName} {this.LastName} \n" +
+                  $"Age: {this.Age} \n" +
+                  $"Date of Birth: {this.DateOfBirth:yyyy-MM-dd} \n" +
+                  $"International student: {this.IsInternational} \n" +
+                  $"Student GPA: {this.GPA}\n" +
+                  $"Sex: {this.Sex}";
+       }
+
+   }
+
+   public enum Sex
+   {
+       Male,
+       Female,
+       Unspecified
+   }
+}
