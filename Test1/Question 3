@@ -1,0 +1,53 @@
+Create a new Console Application project (C#, .NET Core) called "Question03" (without quotes).
+
+
+In your Program.cs file, inside your Question03 namespace and outside the Program class, create a new static class called CharService. In this class, implement two static methods: SaveChars and LoadChars.
+
+The first method, SaveChars, is intended to write a specified list of characters to the hard drive as a text file (.txt), in a specified location. It takes two parameters: a list of chars containing the chars to be saved, and a string that defines the full physical path of the file that will be created (i.e. C:\MyFolder\Example.txt). Each list element must be written in a new line.
+
+The second method, LoadChars, is intended to read and return a list of chars parsed from all characters read from a specified text file. It should take only one parameter: A string containing the full physical path to the file that will be loaded (i.e. C:\MyFolder\Example.txt).
+Once you are done, write the test harness in the Main method of your Program class, ensuring both methods are fully demonstrated. In other words, call the first method to write a file to your hard drive, and afterwards, call the second method to read the very file you have just created (do include a Console.WriteLine or equivalent at the end to display the content you have just loaded). Your code must be tested with a list of chars which size is determined by the last digit of your student number multiplied by 2. For example, if the last digit of your student number is 1, your list should have size 2. If the last digit of your student number is 2, your list should have size 4. If the last digit of your student number is 0, your list should have size 10. The content of this list can be creatively defined by you. You can choose your characters freely.
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+
+namespace Question03
+{
+   class Program
+   {
+       static void Main(string[] args)
+       {
+           string charList = "ThisSentenceHas1";
+           List<char> contents = new List<char>();
+           contents.AddRange(charList);
+
+           CharService.SaveChars(contents, @"C:\_test\charlistContents.text");
+           CharService.LoadChars(@"C:\_test\charlistContents.text");
+
+           Console.WriteLine(charList);
+       }
+   }
+
+   public static class CharService
+   {
+
+       public static void SaveChars(List<char> contents, string filename)
+       {
+           TextWriter writer = new StreamWriter(filename);
+           foreach (char x in contents)
+           {
+               writer.Write($"{x}\n");
+           }
+           writer.Close();
+       }
+       public static void LoadChars(string filename)
+       {
+           TextReader reader = new StreamReader(filename);
+           string line = File.ReadAllText(filename);
+           Console.WriteLine(line);            
+       }
+
+   }
+
+}
