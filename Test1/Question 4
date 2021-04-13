@@ -1,7 +1,10 @@
 Create a new Console Application project (C#, .NET Core) called "Question04" (without quotes).
 
 
-In your Program.cs file, inside your Question04 namespace and outside the Program class, create a new class called Student. In this class, you must define at least 8 properties that describe attributes that a student has. You are free to come up with your own properties, but you must use at least one instance of each of the following data types: string, int, DateTime, boolean. Your first property must be a string StudentID, which is initialized (in the constructor) to a value that is guaranteed to be unique.
+In your Program.cs file, inside your Question04 namespace and outside the Program class, create a new class called Student. In this class, you 
+must define at least 8 properties that describe attributes that a student has. You are free to come up with your own properties, but you must use 
+at least one instance of each of the following data types: string, int, DateTime, boolean. Your first property must be a string StudentID, which is
+initialized (in the constructor) to a value that is guaranteed to be unique.
 
 The Student class must have only one constructor, which is parameterless.
 
@@ -9,12 +12,17 @@ In your Student class, override the ToString method, so that it returns a string
 
 In addition, your class should define two static methods: SaveData and LoadData.
 
-The first method, SaveData, is intended to serialize a specified Student object to the hard drive as an XML file (.xml), in a specified location. It takes two parameters: A Student object to be saved, and a string that defines the full physical path of the directory in which the output XML file will be created (i.e. C:\MyFolder\).
+The first method, SaveData, is intended to serialize a specified Student object to the hard drive as an XML file (.xml), in a specified location. 
+It takes two parameters: A Student object to be saved, and a string that defines the full physical path of the directory in which the output XML 
+file will be created (i.e. C:\MyFolder\).
 
-The second method, LoadData, is intended to deserialize and return a Student object from a specified XML file. It should take only one parameter: A string containing the full physical path to the file that will be loaded (i.e. C:\MyFolder\Data.xml).
+The second method, LoadData, is intended to deserialize and return a Student object from a specified XML file. It should take only one parameter: 
+A string containing the full physical path to the file that will be loaded (i.e. C:\MyFolder\Data.xml).
 
-Once you are done, write the test harness in the Main method of your Program class, ensuring your code is fully functional as per requirements. In other words, define a random Student object in your Main method, serialize it to your hard drive, and then deserialize it, displaying the loaded object in the Console.
-For full marks, ensure possible exceptions are properly treated in your code, and in case of errors, a clean and meaningful message is displayed to the user (Hint: Implement try-catch blocks).
+Once you are done, write the test harness in the Main method of your Program class, ensuring your code is fully functional as per requirements. 
+In other words, define a random Student object in your Main method, serialize it to your hard drive, and then deserialize it, displaying the loaded object in the Console.
+For full marks, ensure possible exceptions are properly treated in your code, and in case of errors, a clean and meaningful message is displayed 
+to the user (Hint: Implement try-catch blocks).
 using System;
 using System.Xml.Serialization;
 using System.IO;
